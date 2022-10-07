@@ -43,6 +43,7 @@ body {
 a {
   color: #ba8fff;
   font-weight: 500;
+  text-decoration: none;
 }
 
 span {
@@ -83,4 +84,18 @@ summary ~ a {
   color: #320e6d;
   margin: 15px 0 10px 7px;
   text-decoration: none;
-}/*# sourceMappingURL=info.css.map */
+}
+
+.contributers h2 {
+  margin: 0;
+  padding-block: 0.5em;
+}
+
+.contributers article img {
+  border-radius: 50%;
+  height: 3em;
+}
+
+.contributers article img + img {
+  margin-inline-start: 0.5em;
+}
