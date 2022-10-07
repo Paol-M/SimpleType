@@ -1,0 +1,1 @@
+const cName="demo-pwa",cFiles=["index.html","/css/style.css"];self.addEventListener("install",e=>{e.waitUntil(caches.open(cName).then(e=>e.addAll(cFiles)).catch(e=>{console.error(e)}))}),self.addEventListener("fetch",s=>{s.respondWith(caches.match(s.request).then(e=>e||fetch(s.request)))});
