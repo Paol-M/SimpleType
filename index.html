@@ -1,1 +1,67 @@
-<!DOCTYPE html><html lang=en><meta charset=UTF-8><meta content="IE=edge"http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1"name=viewport><meta content="You can simply type anything you want. Then you can remove it by reloading the website."name=description><meta content=dark name=color-scheme><link href=./img/ST.ico rel=icon sizes=any><link href=./img/ST.svg rel=icon type=image/svg+xml><link href=./img/ST.png rel=apple-touch-icon><style>body{margin:0}#type{height:100vh;width:100vw;font-size:2.5rem}</style><link href=./css/style.css rel=stylesheet><meta content=#914dff name=apple-mobile-web-app-status-bar><meta content=#914dff name=theme-color><link href=manifest.json rel=manifest><title>SimpleType.</title><textarea autofocus id=type placeholder="Simply type."title="Type here."></textarea><input id=info type=checkbox unchecked><label for=info title=Menu><svg height=50 width=50 xmlns=http://www.w3.org/2000/svg><circle cx=25 cy=10 r=5 /><circle cx=25 cy=25 r=5 /><circle cx=25 cy=40 r=5 /></svg></label><div><a href=./info>Info</a> <a href=./privacy>Privacy</a></div><script>console.log("%c🔒️ SimpleType is private\nContribute on GitHub.","background-color:#cfbcff;color:#3a0092;font-size:4vw;font-family:system-ui;");const info=document.getElementById("info"),type=document.getElementById("type");function closeMenu(){info.checked=!1}info.checked=!1,type.focus(),type.onclick=closeMenu,document.addEventListener("keyup",e=>{"Escape"==e.key&&(info.checked=!1,type.focus())}),"serviceWorker"in navigator&&navigator.serviceWorker.register("sw.js");</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <noscript>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </noscript>
+    <meta name="description" content="You can simply type anything you want. Then you can remove it by reloading the website." />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="icon" href="./img/ST.ico" sizes="any" />
+    <link rel="icon" href="./img/ST.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./img/ST.png" />
+
+    <style>
+      body {
+        margin: 0;
+      }
+      #type {
+        height: 100vh;
+        width: 100vw;
+        font-size: 2.5rem;
+      }
+    </style>
+
+    <meta name="apple-mobile-web-app-status-bar" content="#914dff" />
+    <meta name="theme-color" content="#914dff" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>SimpleType.</title>
+  </head>
+  <body>
+    <textarea placeholder="Simply type." title="Type here." id="type" autofocus></textarea
+    >
+
+    <input type="checkbox" id="info" unchecked />
+    <label for="info" title="Menu">
+      <svg class="menu" xmlns="http://www.w3.org/2000/svg" height="50" width="50">
+        <circle cx="25" cy="10" r="5" />
+        <circle cx="25" cy="25" r="5" />
+        <circle cx="25" cy="40" r="5" />
+      </svg>
+    </label>
+    <div class="menu_links">
+      <a href="/info">Info</a>
+      <a href="/privacy">Privacy</a>
+      <div id="-+">
+        <button id="-">
+          <svg xmlns="http://www.w3.org/2000/svg" height="50" width="50">
+            <rect width="30" height="5" x="10" y="22.5" rx="2" />
+          </svg>
+        </button>
+        <button id="+">
+          <svg xmlns="http://www.w3.org/2000/svg" height="50" width="50">
+            <rect width="30" height="5" x="10" y="22.5" rx="2" />
+            <rect height="30" width="5" y="10" x="22.5" rx="2" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </body>
+
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="script.js"></script>
+</html>

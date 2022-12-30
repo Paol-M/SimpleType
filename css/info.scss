@@ -18,7 +18,11 @@ html {
   font-family: system-ui;
   background-color: #1c1b1e;
   background: var(--clr-purple);
-  background: linear-gradient(90deg, var(--clr-purple) 0%, rgb(220, 0, 255) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--clr-purple) 0%,
+    rgba(220, 0, 255, 1) 100%
+  );
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -59,9 +63,11 @@ details {
 summary {
   font-size: 28px;
   font-weight: bold;
-}
-summary ~ a {
-  display: block;
+  // margin-inline-start: 0px;
+
+  & ~ a {
+    display: block;
+  }
 }
 
 .GitHub {
@@ -74,13 +80,15 @@ summary ~ a {
   position: absolute;
   bottom: 2vw;
   right: 2vw;
+
+  svg {
+    fill: #320e6d;
+    max-width: 30px;
+  }
+
+  p {
+    color: #320e6d;
+    margin: 15px 0 10px 7px;
+    text-decoration: none;
+  }
 }
-.GitHub svg {
-  fill: #320e6d;
-  max-width: 30px;
-}
-.GitHub p {
-  color: #320e6d;
-  margin: 15px 0 10px 7px;
-  text-decoration: none;
-}/*# sourceMappingURL=info.css.map */

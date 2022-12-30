@@ -1,0 +1,180 @@
+$clr-purple: #914dff;
+
+$shadow: 0px 0px 50px -2px #914dffbb;
+
+body {
+  font-family: system-ui;
+  background: $clr-purple;
+  background: linear-gradient(0deg, #dc00ff 33%, $clr-purple 100%);
+  padding: 1vw;
+  overflow: hidden; // Chrome :(
+  -webkit-tap-highlight-color: transparent; // Chrome mobile blue highlight links :(
+  user-select: none;
+}
+
+::selection {
+  background-color: #cfbcff;
+  color: #3a0092;
+}
+
+::-webkit-scrollbar {
+  background-color: #cfbcff;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3a0092;
+  border-radius: 999px;
+  border: #cfbcff 2px solid;
+}
+
+#type {
+  font-family: inherit;
+  box-sizing: border-box;
+  width: 98vw;
+  height: calc(100vh - 2vw - 2px);
+  background-color: #1c1b1e;
+  color: #e6e1e6;
+  border: none;
+  padding: 0 10%;
+  unicode-bidi: plaintext;
+  border-radius: 13px;
+  outline: none;
+  resize: none;
+}
+
+#type:focus ~ .menu_links {
+  display: none;
+}
+
+.menu,
+.menu_links {
+  position: absolute;
+  right: 2vw;
+  box-shadow: $shadow;
+}
+
+.menu {
+  bottom: 2vw;
+  cursor: pointer;
+  fill: #381e80;
+  background-color: #c1b6e6;
+  border-radius: 50%;
+}
+
+.menu_links {
+  bottom: calc(3vw + 50px);
+  width: 140px;
+  padding: 10px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #cebcff;
+
+  & > div {
+    display: none;
+    gap: 4px;
+    button {
+      border-radius: 50%;
+      background-color: #3a0092;
+      fill: #cfbcff;
+      cursor: pointer;
+      border: none;
+      outline-offset: 1px;
+
+      &:focus-visible {
+        outline: 3px solid #8f80e2;
+      }
+    }
+  }
+}
+
+a {
+  color: #3a0092;
+  font-size: 1.4rem;
+  text-decoration: none;
+  padding-block: 8px;
+  padding-inline-start: 8px;
+  border-radius: 5px;
+
+  &:hover,
+  &::selection {
+    background-color: #b291e775;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #8f80e2;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  input:not(:checked) ~ .menu_links {
+    transition: scale 150ms;
+    scale: 0;
+    transform-origin: 86% 115%;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  input:not(:checked) ~ .menu_links {
+    display: none;
+  }
+}
+
+input {
+  opacity: 0; // Visible on Chrome :(
+  position: absolute;
+  right: 2.5vw;
+  bottom: 2.5vw;
+}
+
+.menu {
+  transition: transform 200ms ease-in-out;
+  // transition: rotate 450ms ease-in-out;
+}
+
+input:hover ~ label > .menu {
+  transform: scale(0.9);
+}
+
+input:focus-visible ~ label > .menu {
+  outline: 5px solid #dac5fa;
+  outline-offset: 3px;
+  rotate: 1turn;
+}
+
+input:checked ~ label > .menu {
+  animation: menuToggle 150ms;
+}
+
+@keyframes menuToggle {
+  50% {
+    scale: 0.85;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-width: 1000px), (max-height: 500px) {
+  .menu,
+  .menu_links,
+  input {
+    display: none;
+  }
+
+  #type {
+    font-size: 4em;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  #type {
+    font-size: 4.5vh;
+  }
+}
+
+@media (display-mode: standalone) {
+  .menu_links a,
+  input {
+    display: none;
+  }
+}
