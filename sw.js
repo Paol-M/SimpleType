@@ -1,24 +1,21 @@
 const cName = "demo-pwa",
 cFiles = [
-  "index.html",
+  "/index.html",
   "/css/style.css"
 ];
 
-// (B) CREATE/INSTALL CACHE
-self.addEventListener("install", (evt) => {
-  evt.waitUntil(
-    caches.open(cName)
-    .then((cache) => { return cache.addAll(cFiles); })
-    .catch((err) => { console.error(err) })
+self.addEventListener('install', function(e) {
+  e.waitUntil(
+    caches.open(cName).then(function(cache) {
+      return cache.addAll(cFiles);
+    })
   );
 });
- 
-// (C) CACHE STRATEGY
-self.addEventListener("fetch", (evt) => {
-  // (C1) LOAD FROM CACHE FIRST, FALLBACK TO NETWORK IF NOT FOUND
-  evt.respondWith(
-    caches.match(evt.request)
-    .then((res) => { return res || fetch(evt.request); })
-  );
 
+self.addEventListener('fetch', function(e) {
+  e.respondWith(
+    caches.match(e.request).then(function(response) {
+      return response || fetch(e.request);
+    })
+  );
 });

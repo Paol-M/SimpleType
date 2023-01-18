@@ -8,7 +8,7 @@ const plus = document.getElementById("+");
 info.checked = false;
 type.focus();
 
-document.getElementById("-+").style.display ="flex";
+document.getElementById("-+").style.display = "flex";
 
 type.onclick = closeMenu;
 function closeMenu() {
@@ -37,7 +37,7 @@ function minusSize() {
 
     plus.style.fillOpacity = 1;
     plus.style.cursor = "pointer";
-    
+
     minus.style.fillOpacity = 1;
     minus.style.cursor = "pointer";
   } else {
@@ -66,3 +66,12 @@ function addSize() {
     plus.style.cursor = "not-allowed";
   }
 }
+
+// PWA
+window.onload = () => {
+"use strict";
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+};
