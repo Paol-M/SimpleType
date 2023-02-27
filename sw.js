@@ -1,7 +1,8 @@
 const cName = "demo-pwa",
 cFiles = [
-  "/index.html",
-  "/css/style.css"
+  "index.html",
+  "css/style.css",
+  "script.js"
 ];
 
 self.addEventListener('install', function(e) {

@@ -22,10 +22,6 @@ document.addEventListener("keyup", (evt) => {
   }
 });
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("sw.js");
-}
-
 minus.onclick = minusSize;
 function minusSize() {
   var x = window.getComputedStyle(type).fontSize;
@@ -68,10 +64,14 @@ function addSize() {
 }
 
 // PWA
-window.onload = () => {
-"use strict";
-
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js");
+document.addEventListener('DOMContentLoaded', function() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(function(registration) {
+        console.log('Service worker registered successfully');
+      })
+      .catch(function(error) {
+        console.log('Service worker registration failed: ', error);
+      });
   }
-};
+});
