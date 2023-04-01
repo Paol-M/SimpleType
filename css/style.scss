@@ -43,7 +43,7 @@ body {
   resize: none;
 }
 
-#type:focus ~ .menu_links {
+#type:focus~.menu_links {
   display: none;
 }
 
@@ -72,21 +72,37 @@ body {
   flex-direction: column;
   background-color: #cebcff;
 
-  & > div {
+  &>div {
     display: none;
     gap: 4px;
-    button {
-      border-radius: 50%;
-      background-color: #3a0092;
-      fill: #cfbcff;
-      cursor: pointer;
-      border: none;
-      outline-offset: 1px;
+  }
+}
 
-      &:focus-visible {
-        outline: 3px solid #8f80e2;
-      }
-    }
+#zoom button {
+
+  border-radius: 50%;
+  background-color: #3a0092;
+  fill: #cfbcff;
+  cursor: pointer;
+  border: none;
+  outline-offset: 1px;
+
+  &:focus-visible {
+    outline: 3px solid #8f80e2;
+  }
+}
+
+#tts {
+  margin-top: 10px;
+  border-radius: 13px;
+  background-color: #3a0092;
+  fill: #cfbcff;
+  cursor: pointer;
+  border: none;
+  outline-offset: 1px;
+
+  &:focus-visible {
+    outline: 3px solid #8f80e2;
   }
 }
 
@@ -109,7 +125,7 @@ a {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  input:not(:checked) ~ .menu_links {
+  input:not(:checked)~.menu_links {
     transition: scale 150ms;
     scale: 0;
     transform-origin: 86% 115%;
@@ -117,7 +133,7 @@ a {
 }
 
 @media (prefers-reduced-motion) {
-  input:not(:checked) ~ .menu_links {
+  input:not(:checked)~.menu_links {
     display: none;
   }
 }
@@ -134,17 +150,17 @@ input {
   // transition: rotate 450ms ease-in-out;
 }
 
-input:hover ~ label > .menu {
+input:hover~label>.menu {
   transform: scale(0.9);
 }
 
-input:focus-visible ~ label > .menu {
+input:focus-visible~label>.menu {
   outline: 5px solid #dac5fa;
   outline-offset: 3px;
   rotate: 1turn;
 }
 
-input:checked ~ label > .menu {
+input:checked~label>.menu {
   animation: menuToggle 150ms;
 }
 
@@ -154,7 +170,9 @@ input:checked ~ label > .menu {
   }
 }
 
-@media screen and (orientation: landscape) and (max-width: 1000px), (max-height: 500px) {
+@media screen and (orientation: landscape) and (max-width: 1000px),
+(max-height: 500px) {
+
   .menu,
   .menu_links,
   input {
@@ -173,6 +191,7 @@ input:checked ~ label > .menu {
 }
 
 @media (display-mode: standalone) {
+
   .menu_links a,
   input {
     display: none;

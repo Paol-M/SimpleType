@@ -1,14 +1,17 @@
-console.log("%c🔒️ SimpleType is private\nContribute on GitHub.", "background-color:#cfbcff;color:#3a0092;font-size:4vw;font-family:system-ui;");
+console.log(
+  "%c🔒️ SimpleType is private\nContribute on GitHub.",
+  "background-color:#cfbcff;color:#3a0092;font-size:4vw;font-family:system-ui;"
+);
 
 const info = document.getElementById("info");
 const type = document.getElementById("type");
-const minus = document.getElementById("-");
-const plus = document.getElementById("+");
+const minus = document.getElementById("zoomOut");
+const plus = document.getElementById("zoomIn");
 
 info.checked = false;
 type.focus();
 
-document.getElementById("-+").style.display = "flex";
+document.getElementById("zoom").style.display = "flex";
 
 type.onclick = closeMenu;
 function closeMenu() {
@@ -63,15 +66,32 @@ function addSize() {
   }
 }
 
+// TTS
+const tts = document.getElementById("tts");
+
+if ("speechSynthesis" in window) {
+  console.log("Broswer supports speech synthesis");
+  document.getElementById("tts").addEventListener("click", () => {
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = document.getElementById("type").value;
+    msg.lang = "en-US";
+    window.speechSynthesis.speak(msg);
+  });
+} else {
+  console.log("Browser doesn't support speech synthesis");
+  tts.style.display = "none";
+}
+
 // PWA
-document.addEventListener('DOMContentLoaded', function() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
-      .then(function(registration) {
-        console.log('Service worker registered successfully');
+document.addEventListener("DOMContentLoaded", function () {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("sw.js")
+      .then(function (registration) {
+        console.log("Service worker registered successfully!");
       })
-      .catch(function(error) {
-        console.log('Service worker registration failed: ', error);
+      .catch(function (error) {
+        console.log("Service worker registration failed: ", error);
       });
   }
 });
