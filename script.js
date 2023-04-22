@@ -1,29 +1,15 @@
-console.log(
-  "%c🔒️ SimpleType is private\nContribute on GitHub.",
-  "background-color:#cfbcff;color:#3a0092;font-size:4vw;font-family:system-ui;"
-);
+console.log("%c🔒️ SimpleType respects your privacy\nContribute on GitHub.", "background-color:#cfbcff;color:#3a0092;font-size:4vw;font-family:system-ui;");
 
 const info = document.getElementById("info");
 const type = document.getElementById("type");
 const minus = document.getElementById("zoomOut");
 const plus = document.getElementById("zoomIn");
 
-info.checked = false;
 type.focus();
 
 document.getElementById("zoom").style.display = "flex";
 
-type.onclick = closeMenu;
-function closeMenu() {
-  info.checked = false;
-}
-
-document.addEventListener("keyup", (evt) => {
-  if (evt.key == "Escape") {
-    info.checked = false;
-    type.focus();
-  }
-});
+// type.style.rotate = "180deg";
 
 minus.onclick = minusSize;
 function minusSize() {

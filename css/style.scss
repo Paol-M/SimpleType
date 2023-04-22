@@ -1,122 +1,64 @@
-$clr-purple: #914dff;
-
-$shadow: 0px 0px 50px -2px #914dffbb;
+// https://m3.material.io/theme-builder#/custom (primary is #c0a8e6 · rest is default)
+$clr-primary: #d5baff;
+$clr-onPrimary: #3d1c6f;
+$clr-primaryContainer: #553587;
+$clr-onPrimaryContainer: #ecdcff;
+$clr-background: #1d1b1e;
+$clr-onBackground: #e6e1e6;
+$clr-secondary: #cec2db;
+$clr-onSecondary: #342d40;
 
 body {
-  font-family: system-ui;
-  background: $clr-purple;
-  background: linear-gradient(0deg, #dc00ff 33%, $clr-purple 100%);
-  padding: 1vw;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   overflow: hidden; // Chrome :(
-  -webkit-tap-highlight-color: transparent; // Chrome mobile blue highlight links :(
+  -webkit-tap-highlight-color: transparent; // Chrome mobile blue highlight on interactive elements :(
   user-select: none;
+  background-color: $clr-background; // body is visable on the border-radius of .menu
 }
 
 ::selection {
-  background-color: #cfbcff;
-  color: #3a0092;
+  background-color: $clr-primary;
+  color: $clr-onPrimary;
 }
 
 ::-webkit-scrollbar {
-  background-color: #cfbcff;
+  background-color: $clr-primary;
   width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #3a0092;
+  background-color: $clr-onPrimary;
   border-radius: 999px;
-  border: #cfbcff 2px solid;
+  border: $clr-primary 2px solid;
 }
 
 #type {
   font-family: inherit;
   box-sizing: border-box;
-  width: 98vw;
-  height: calc(100vh - 2vw - 2px);
-  background-color: #1c1b1e;
-  color: #e6e1e6;
+  height: calc(100vh - 55px);
+  height: calc(100dvh - 55px);
+  background-color: $clr-background;
+  color: $clr-onBackground;
   border: none;
-  padding: 0 10%;
+  padding: 0 8%;
   unicode-bidi: plaintext;
-  border-radius: 13px;
   outline: none;
   resize: none;
+  margin: 0;
+  position: relative;
 }
 
-#type:focus~.menu_links {
-  display: none;
-}
-
-.menu,
-.menu_links {
+.about {
   position: absolute;
-  right: 2vw;
-  box-shadow: $shadow;
-}
-
-.menu {
-  bottom: 2vw;
-  cursor: pointer;
-  fill: #381e80;
-  background-color: #c1b6e6;
-  border-radius: 50%;
-}
-
-.menu_links {
-  bottom: calc(3vw + 50px);
-  width: 140px;
-  padding: 10px;
-  border-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
-  background-color: #cebcff;
-
-  &>div {
-    display: none;
-    gap: 4px;
-  }
-}
-
-#zoom button {
-
-  border-radius: 50%;
-  background-color: #3a0092;
-  fill: #cfbcff;
-  cursor: pointer;
-  border: none;
-  outline-offset: 1px;
-
-  &:focus-visible {
-    outline: 3px solid #8f80e2;
-  }
-}
-
-#tts {
-  margin-top: 10px;
-  border-radius: 13px;
-  background-color: #3a0092;
-  fill: #cfbcff;
-  cursor: pointer;
-  border: none;
-  outline-offset: 1px;
-
-  &:focus-visible {
-    outline: 3px solid #8f80e2;
-  }
-}
-
-a {
-  color: #3a0092;
-  font-size: 1.4rem;
+  top: calc(100vh - 85px);
+  top: calc(100dvh - 85px);
+  right: 10px;
+  color: greenyellow;
   text-decoration: none;
-  padding-block: 8px;
-  padding-inline-start: 8px;
-  border-radius: 5px;
 
   &:hover,
   &::selection {
-    background-color: #b291e775;
+    text-decoration: underline;
   }
 
   &:focus-visible {
@@ -124,76 +66,118 @@ a {
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  input:not(:checked)~.menu_links {
-    transition: scale 150ms;
-    scale: 0;
-    transform-origin: 86% 115%;
-  }
-}
-
-@media (prefers-reduced-motion) {
-  input:not(:checked)~.menu_links {
-    display: none;
-  }
-}
-
-input {
-  opacity: 0; // Visible on Chrome :(
-  position: absolute;
-  right: 2.5vw;
-  bottom: 2.5vw;
-}
-
 .menu {
-  transition: transform 200ms ease-in-out;
-  // transition: rotate 450ms ease-in-out;
+  height: 45px;
+  padding: 5px;
+  border-radius: 13px 13px 0 0;
+  display: flex;
+  background-color: $clr-primaryContainer;
+  overflow-x: auto;
+
+  // Chrome mobile is weird. 👇️
+  position: absolute;
+  inset: 0;
+  top: calc(100vh - 55px);
+  top: calc(100dvh - 55px);
+
+  button:active {
+    transition: scale 200ms;
+    scale: 0.9;
+  }
 }
 
-input:hover~label>.menu {
-  transform: scale(0.9);
+.count {
+  margin-right: auto;
+  display: flex;
+  // gap: 20px;
+  color: $clr-onPrimaryContainer;
+  white-space: nowrap;
+  max-width: 160px;
+  overflow-x: auto;
+  p {
+    max-width: 200px;
+  }
 }
 
-input:focus-visible~label>.menu {
-  outline: 5px solid #dac5fa;
-  outline-offset: 3px;
-  rotate: 1turn;
+#zoom {
+  // outline: 2px solid $clr-secondary;
+  width: max-content;
+  button {
+    border-radius: 50%;
+    background-color: $clr-primary;
+    fill: $clr-onPrimary;
+    cursor: pointer;
+    border: none;
+  }
 }
 
-input:checked~label>.menu {
-  animation: menuToggle 150ms;
+#zoomOut:hover>svg {
+  animation: zoomOut 600ms ease-in-out 2;
 }
 
-@keyframes menuToggle {
+@keyframes zoomOut {
   50% {
-    scale: 0.85;
+    scale: 0.8;
   }
 }
 
-@media screen and (orientation: landscape) and (max-width: 1000px),
-(max-height: 500px) {
+#zoomIn:hover>svg {
+  animation: zoomIn 600ms ease-in-out 2;
+}
 
-  .menu,
-  .menu_links,
-  input {
-    display: none;
-  }
-
-  #type {
-    font-size: 4em;
+@keyframes zoomIn {
+  50% {
+    scale: 1.2;
   }
 }
 
-@media screen and (orientation: portrait) {
-  #type {
-    font-size: 4.5vh;
+.menuItem {
+  border-radius: 13px;
+  background-color: $clr-primary;
+  fill: $clr-onPrimary;
+  cursor: pointer;
+  border: none;
+  width: 45px;
+  height: 45px;
+
+  svg {
+    width: 80%;
+    height: auto;
+  }
+  &:focus-visible {
+    outline: 3px solid $clr-onPrimary;
   }
 }
 
-@media (display-mode: standalone) {
+.menuItem+.menuItem,
+#zoom {
+  margin-inline-start: 0.25vw;
+}
 
-  .menu_links a,
-  input {
-    display: none;
-  }
+.rotater svg {
+  rotate: 180deg;
+  transition: rotate 450ms;
+}
+
+.rotater:hover svg {
+  rotate: 155deg;
+}
+
+
+#rotate:checked~textarea {
+  rotate: 180deg;
+}
+
+#rotate:checked~.menu .rotater svg {
+  rotate: 0deg;
+}
+
+#rotate:checked~.menu .rotater:hover svg {
+  rotate: -25deg;
+}
+
+#rotate {
+  position: absolute;
+  opacity: 0;
+  cursor: text;
 }

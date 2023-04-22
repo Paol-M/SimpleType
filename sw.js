@@ -2,7 +2,8 @@ const cName = "demo-pwa",
 cFiles = [
   "index.html",
   "css/style.css",
-  "script.js"
+  "script.js",
+  "wordCount.js"
 ];
 
 self.addEventListener('install', function(e) {

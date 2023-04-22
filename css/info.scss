@@ -1,28 +1,32 @@
-:root {
-  --clr-purple: #914dff;
-  --shadow: 0px 0px 50px -2px #914dffbb;
+$clr-primary: #d5baff;
+$clr-onPrimary: #3d1c6f;
+$clr-primaryContainer: #553587;
+$clr-onPrimaryContainer: #ecdcff;
+$clr-background: #1d1b1e;
+$clr-onBackground: #e6e1e6;
+$clr-secondary: #cec2db;
+$clr-onSecondary: #342d40;
+
+::selection {
+  background-color: $clr-primary;
+  color: $clr-onPrimary;
 }
 
 ::-webkit-scrollbar {
-  background-color: #cfbcff;
+  background-color: $clr-primary;
   width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #3a0092;
+  background-color: $clr-onPrimary;
   border-radius: 999px;
-  border: #cfbcff 2px solid;
+  border: $clr-primary 2px solid;
 }
 
 html {
   font-family: system-ui;
-  background-color: #1c1b1e;
-  background: var(--clr-purple);
-  background: linear-gradient(
-    90deg,
-    var(--clr-purple) 0%,
-    rgba(220, 0, 255, 1) 100%
-  );
+  background-color: $clr-background;
+  color: $clr-onBackground;
   margin: 0;
   padding: 0;
   font-size: 1.2em;
@@ -31,21 +35,18 @@ html {
 
 h2, summary {
   margin-block: 30px 0;
-  border-bottom: 2px solid #cfbcff;
+  border-bottom: 2px solid $clr-primary;
 }
 
 
 aside {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 body {
-  box-sizing: border-box;
-  background-color: #1c1b1e;
-  color: white;
-  min-height: calc(100vh - 2vw);
-  margin: 1vw;
+  min-height: 100vh;
+  margin: 0;
   border-radius: 13px;
   padding-inline: 10%;
 }
@@ -56,7 +57,7 @@ section {
 }
 
 a {
-  color: #ba8fff;
+  color: $clr-primary;
   font-weight: 500;
 }
 
@@ -77,21 +78,5 @@ summary {
 
   & ~ a {
     display: block;
-  }
-}
-
-.GitHub {
-  background-color: #c5b2f8;
-  text-align: center;
-  box-shadow: var(--shadow);
-  padding: 8px;
-  border-radius: 50%;
-  position: fixed;
-  bottom: 2vw;
-  right: 2vw;
-
-  svg {
-    fill: #320e6d;
-    width: 50px;
   }
 }
