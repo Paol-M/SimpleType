@@ -1,40 +1,49 @@
+import { countWords, countLines } from './node_modules/alfaaz/dist/index.js';
+
 const wCount = document.getElementById("wCount");
+const sCount = document.getElementById("sCount");
+const count = document.getElementById("count");
 const type = document.getElementById("type");
+const clearText = document.getElementById('clearText');
+
+let lineMode = false;
+
+
+count.style.display = "flex";
+
+count.onclick = function () {
+  if (lineMode) {
+    lineMode = false;
+    sCount.style.display = "none";
+    wCount.style.display = "flex";
+  } else {
+    lineMode = true;
+    wCount.style.display = "none";
+    sCount.style.display = "flex";
+  }
+  updateCount();
+}
 
 function updateCount() {
-  var text = type.value.trim();
-  if (typeof text === "string" && text.length > 0) {
-    let start = type.selectionStart;
-    let end = type.selectionEnd;
-    if (start === end) {
-      start = 0;
-      end = text.length;
-    }
+  let textContent = type.value;
+  let count = lineMode ? countLines(textContent) : countWords(textContent);
+  if (lineMode) {
+    sCount.textContent = count.toLocaleString() + " line" + (count === 1 ? "" : "s");
+  } else {
+    wCount.textContent = count.toLocaleString() + " word" + (count === 1 ? "" : "s");
+  }
+}
 
-    let selectedText = text.slice(start, end);
-    let count = selectedText.split(/\s/).filter((word) => word !== "").length;
-
-    let realStart = type.selectionStart;
-    let realEnd = type.selectionEnd;
-
-    if (count === 1) {
-      if (realStart === realEnd) {
-        wCount.textContent = count + " word";
-      } else {
-        wCount.textContent = count + " word selected";
-      }
-    } else {
-      if (realStart === realEnd) {
-        wCount.textContent = count + " words";
-      } else {
-        wCount.textContent = count + " words selected";
-      }
-    }
+export function countSelection() {
+  let selection = window.getSelection();
+  let textContent = selection.toString();
+  let count = lineMode ? countLines(textContent) : countWords(textContent);
+  if (lineMode) {
+    sCount.textContent = count.toLocaleString() + " line" + (count === 1 ? "" : "s");
+  } else {
+    wCount.textContent = count.toLocaleString() + " word" + (count === 1 ? "" : "s");
   }
 }
 
 type.addEventListener("input", updateCount);
-type.addEventListener("selectionchange", updateCount);
-type.addEventListener("click", updateCount);
-
-// updateCount();
+clearText.addEventListener("click", updateCount);

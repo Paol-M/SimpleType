@@ -1,89 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <meta name="description" content="You can simply type anything you want. Then you can remove it by reloading the website." />
-    <meta name="color-scheme" content="dark" />
 
-    <link rel="icon" href="./img/ST.ico" sizes="any" />
-    <link rel="icon" href="./img/ST.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="./img/ST.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description"
+    content="You can simply type anything you want. Then you can remove it by reloading the website." />
+  <meta name="color-scheme" content="dark" />
 
-    <noscript>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <style>
-        #zoom,
-        #tts {
-          display: none;
-        }
-      </style>
-    </noscript>
+  <link rel="icon" href="./img/ST.ico" sizes="any" />
+  <link rel="icon" href="./img/ST.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./img/ST.png" />
 
+
+  <noscript>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      @media screen {
-        body {
-          margin: 0;
-        }
-        #type {
-          height: 100vh;
-          width: 100vw;
-          font-size: 2.5rem;
-        }
+      #zoom,
+      #tts {
+        display: none;
+      }
+
+      .menuItem {
+        margin-left: 0 !important;
       }
     </style>
-    <link rel="stylesheet" href="./css/style.css" media="screen" />
-    <link rel="stylesheet" href="./css/mainPrint.css" media="print" />
+  </noscript>
 
-    <meta name="apple-mobile-web-app-status-bar" content="#d5baff" />
-    <meta name="theme-color" content="#914dff" />
-    <link rel="manifest" href="manifest.json" />
+  <style>
+    @media screen {
+      body {
+        margin: 0;
+      }
 
-    <title>SimpleType.</title>
-  </head>
-  <body>
-    <input type="checkbox" id="rotate" />
-    <textarea placeholder="Simply, type…" title="Type here." id="type" autofocus></textarea>
-    <a href="./info" class="about">About</a>
-    <div class="menu">
-      <div class="count">
-        <p id="wCount">0 words</p>
-        <!-- <p id="sCount">1 sentences</p> -->
-      </div>
+      #type {
+        height: 100vh;
+        width: 100vw;
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="./css/style.css" media="screen" />
+  <link rel="stylesheet" href="./css/mainPrint.css" media="print" />
 
-      <button id="tts" class="menuItem" title="Text-to-speech narration">
-        <title>Text-to-speech narration</title>
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 96 960 960"><path d="M140 976q-25 0-42-18t-18-42V236q0-25 18-42t42-18h380l-60 60H140v680h480V776h60v140q0 25-18 42t-42 18H140Zm100-170v-60h280v60H240Zm0-120v-60h200v60H240Zm380 10L460 536H320V336h140l160-160v520Zm60-92V258q56 21 88 74t32 104q0 51-35 101t-85 67Zm0 142v-62q70-25 125-90t55-158q0-93-55-158t-125-90v-62q102 27 171 113t69 197q0 112-69 198T680 746Z" /></svg>
-      </button>
+  <meta name="apple-mobile-web-app-status-bar" content="#d5baff" />
+  <meta name="theme-color" content="#914dff" />
+  <link rel="manifest" href="manifest.json" />
 
-      <button class="menuItem" title="Rotate text">
-        <label for="rotate" class="menuItem rotater">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 96 960 960">
-            <title>Rotate text</title>
-            <path d="M160 860v-60h566l-52-52 42-42 124 124-124 124-42-42 52-52H160Zm126-204 164-440h59l164 440h-55l-43-122H384l-43 122h-55Zm114-166h160l-78-222h-4l-78 222Z" />
-          </svg>
-        </label>
-      </button>
-
-      <div id="zoom">
-        <button id="zoomOut" class="menuItem" title="Zoom out">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-            <title>Zoom out</title>
-            <rect width="30" height="5" x="10" y="22.5" rx="2" />
-          </svg>
-        </button>
-
-        <button id="zoomIn" class="menuItem" title="Zoom in">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-            <title>Zoom in</title>
-            <rect width="30" height="5" x="10" y="22.5" rx="2" />
-            <rect height="30" width="5" y="10" x="22.5" rx="2" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </body>
-  <script src="script.js"></script>
   <script src="wordCount.js" type="module"></script>
+
+  <title>SimpleType.</title>
+</head>
+
+<body>
+  <input type="checkbox" id="rotate" />
+  <textarea placeholder="Simply, type…" title="Type here." id="type" autofocus></textarea>
+  <noscript>
+    <a href="./info" class="about">About</a>
+  </noscript>
+  <div class="menu">
+    <button class="count" style="display: none;" id="count" title="Toggle counter type">
+      <p id="wCount">0 words</p>
+      <p id="sCount" style="display: none;">0 sentences</p>
+    </button>
+
+    <button id="tts" class="menuItem" title="Text-to-speech narration">
+      <title>Text-to-speech narration</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 96 960 960">
+        <path
+          d="M140 976q-25 0-42-18t-18-42V236q0-25 18-42t42-18h380l-60 60H140v680h480V776h60v140q0 25-18 42t-42 18H140Zm100-170v-60h280v60H240Zm0-120v-60h200v60H240Zm380 10L460 536H320V336h140l160-160v520Zm60-92V258q56 21 88 74t32 104q0 51-35 101t-85 67Zm0 142v-62q70-25 125-90t55-158q0-93-55-158t-125-90v-62q102 27 171 113t69 197q0 112-69 198T680 746Z" />
+      </svg>
+    </button>
+
+    <button class="menuItem" title="Rotate text">
+      <label for="rotate" class="menuItem rotater">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 96 960 960">
+          <title>Rotate text</title>
+          <path
+            d="M160 860v-60h566l-52-52 42-42 124 124-124 124-42-42 52-52H160Zm126-204 164-440h59l164 440h-55l-43-122H384l-43 122h-55Zm114-166h160l-78-222h-4l-78 222Z" />
+        </svg>
+      </label>
+    </button>
+
+    <div id="zoom">
+      <button id="zoomOut" class="menuItem" title="Zoom out">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+          <title>Zoom out</title>
+          <rect width="30" height="5" x="10" y="22.5" rx="2" />
+        </svg>
+      </button>
+
+      <button id="zoomIn" class="menuItem" title="Zoom in">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+          <title>Zoom in</title>
+          <rect width="30" height="5" x="10" y="22.5" rx="2" />
+          <rect height="30" width="5" y="10" x="22.5" rx="2" />
+        </svg>
+      </button>
+    </div>
+
+    <button id="open" class="menuItem" title="More settings" style="display: none;" closed>
+      <title>View more settings</title>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+        <path
+          d="m357-384 123-123 123 123 57-56-180-180-180 180 57 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+      </svg>
+    </button>
+    
+    <div id="moreSettings" class="moreSettings" style="display: none;">
+      <ul>
+        <li><a href="./info/">Info</a></li>
+        <!-- <li><button>Arabizi–Arabic</button></li> -->
+        <li><button id="clearText">Clear text</button></li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script src="script.js" ></script>
+
 </html>

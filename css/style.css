@@ -1,1 +1,225 @@
-body{font-family:Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;overflow:hidden;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-color:#1d1b1e}::-moz-selection{background-color:#d5baff;color:#3d1c6f}::selection{background-color:#d5baff;color:#3d1c6f}::-webkit-scrollbar{background-color:#d5baff;width:8px}::-webkit-scrollbar-thumb{background-color:#3d1c6f;border-radius:999px;border:#d5baff 2px solid}#type{font-family:inherit;-webkit-box-sizing:border-box;box-sizing:border-box;height:calc(100vh - 55px);height:calc(100dvh - 55px);background-color:#1d1b1e;color:#e6e1e6;border:none;padding:0 8%;unicode-bidi:plaintext;outline:none;resize:none;margin:0;position:relative}.about{position:absolute;top:calc(100vh - 85px);top:calc(100dvh - 85px);right:10px;color:#adff2f;text-decoration:none}.about::-moz-selection{text-decoration:underline}.about:hover,.about::selection{text-decoration:underline}.about:focus-visible{outline:3px solid #8f80e2}.menu{height:45px;padding:5px;border-radius:13px 13px 0 0;display:-webkit-box;display:-ms-flexbox;display:flex;background-color:#553587;overflow-x:auto;position:absolute;inset:0;top:calc(100vh - 55px);top:calc(100dvh - 55px)}.menu button:active{-webkit-transition:scale 200ms;transition:scale 200ms;scale:.9}.count{margin-right:auto;display:-webkit-box;display:-ms-flexbox;display:flex;color:#ecdcff;white-space:nowrap;max-width:160px;overflow-x:auto}.count p{max-width:200px}#zoom{width:-webkit-max-content;width:-moz-max-content;width:max-content}#zoom button{border-radius:50%;background-color:#d5baff;fill:#3d1c6f;cursor:pointer;border:none}#zoomOut:hover>svg{-webkit-animation:zoomOut 600ms ease-in-out 2;animation:zoomOut 600ms ease-in-out 2}@-webkit-keyframes zoomOut{50%{scale:.8}}@keyframes zoomOut{50%{scale:.8}}#zoomIn:hover>svg{-webkit-animation:zoomIn 600ms ease-in-out 2;animation:zoomIn 600ms ease-in-out 2}@-webkit-keyframes zoomIn{50%{scale:1.2}}@keyframes zoomIn{50%{scale:1.2}}.menuItem{border-radius:13px;background-color:#d5baff;fill:#3d1c6f;cursor:pointer;border:none;width:45px;height:45px}.menuItem svg{width:80%;height:auto}.menuItem:focus-visible{outline:3px solid #3d1c6f}.menuItem+.menuItem,#zoom{-webkit-margin-start:.25vw;margin-inline-start:.25vw}.rotater svg{rotate:180deg;-webkit-transition:rotate 450ms;transition:rotate 450ms}.rotater:hover svg{rotate:155deg}#rotate:checked~textarea{rotate:180deg}#rotate:checked~.menu .rotater svg{rotate:0deg}#rotate:checked~.menu .rotater:hover svg{rotate:-25deg}#rotate{position:absolute;opacity:0;cursor:text}
+body {
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-color: #1d1b1e;
+}
+
+button, a {
+  color: inherit;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+::-moz-selection {
+  background-color: #d5baff;
+  color: #3d1c6f;
+}
+
+::selection {
+  background-color: #d5baff;
+  color: #3d1c6f;
+}
+
+::-webkit-scrollbar {
+  background-color: #d5baff;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3d1c6f;
+  border-radius: 999px;
+  border: #d5baff 2px solid;
+}
+
+#type {
+  font-family: inherit;
+  box-sizing: border-box;
+  height: calc(100vh - 55px);
+  height: calc(100dvh - 55px);
+  background-color: #1d1b1e;
+  color: #e6e1e6;
+  border: none;
+  padding: 0 8%;
+  unicode-bidi: plaintext;
+  outline: none;
+  resize: none;
+  margin: 0;
+  position: relative;
+}
+
+.about {
+  position: absolute;
+  top: calc(100vh - 85px);
+  top: calc(100dvh - 85px);
+  right: 10px;
+  color: #9dffa4;
+  text-decoration: none;
+}
+.about::-moz-selection {
+  text-decoration: underline;
+}
+.about:hover, .about::selection {
+  text-decoration: underline;
+}
+.about:focus-visible {
+  outline: 3px solid #8f80e2;
+}
+
+.menu {
+  height: 45px;
+  padding: 5px;
+  border-radius: 16px;
+  display: flex;
+  background-color: rebeccapurple;
+  overflow-x: auto;
+  position: absolute;
+  inset: 0;
+  top: calc(100vh - 55px);
+  top: calc(100dvh - 55px);
+}
+.menu button:active {
+  transition: scale 200ms;
+  scale: 0.9;
+}
+
+.count {
+  margin-right: auto;
+  display: flex;
+  color: #342d40;
+  white-space: nowrap;
+  max-width: 160px;
+  overflow-x: auto;
+  background-color: #cec2db;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+}
+.count p {
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+#zoom {
+  width: -moz-max-content;
+  width: max-content;
+}
+#zoom button {
+  background-color: #d5baff;
+  fill: #3d1c6f;
+  cursor: pointer;
+  border: none;
+}
+
+#zoomOut:hover > svg {
+  animation: zoomOut 600ms ease-in-out 2;
+}
+
+@keyframes zoomOut {
+  50% {
+    scale: 0.8;
+  }
+}
+#zoomIn:hover > svg {
+  animation: zoomIn 600ms ease-in-out 2;
+}
+
+@keyframes zoomIn {
+  50% {
+    scale: 1.2;
+  }
+}
+.menuItem {
+  border-radius: 11px;
+  background-color: #d5baff;
+  fill: #3d1c6f;
+  cursor: pointer;
+  border: none;
+  width: 45px;
+  height: 45px;
+  margin-inline-start: 2.5px;
+}
+.menuItem svg {
+  width: 80%;
+  height: auto;
+}
+.menuItem:focus-visible {
+  outline: 3px solid #3d1c6f;
+}
+
+.rotater svg {
+  rotate: 180deg;
+  transition: rotate 450ms;
+}
+
+.rotater:hover svg {
+  rotate: 155deg;
+}
+
+#rotate:checked ~ textarea {
+  rotate: 180deg;
+}
+
+#rotate:checked ~ .menu .rotater svg {
+  rotate: 0deg;
+}
+
+#rotate:checked ~ .menu .rotater:hover svg {
+  rotate: -25deg;
+}
+
+#rotate {
+  position: absolute;
+  opacity: 0;
+  cursor: text;
+}
+
+#open svg {
+  transition: rotate 200ms;
+  rotate: 0;
+}
+
+#open[data-state=open] svg {
+  rotate: 0.5turn;
+}
+
+.moreSettings {
+  position: fixed;
+  right: 15px;
+  background-color: #3d1c6f;
+  color: #d5baff;
+  border-radius: 16px;
+  bottom: 60px;
+  padding: 0;
+}
+.moreSettings ul {
+  background-color: #d5baff;
+  color: #3d1c6f;
+  border-radius: 11px;
+  padding: 5px;
+  margin: 5px;
+  list-style-type: none;
+}
+.moreSettings ul li {
+  border-radius: 11px;
+  padding: 5px;
+  cursor: pointer;
+}
+.moreSettings ul li button, .moreSettings ul li a {
+  display: block;
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.moreSettings ul li:hover {
+  color: #d5baff;
+  background-color: #3d1c6f;
+}/*# sourceMappingURL=style.css.map */

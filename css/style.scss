@@ -1,7 +1,7 @@
 // https://m3.material.io/theme-builder#/custom (primary is #c0a8e6 · rest is default)
 $clr-primary: #d5baff;
 $clr-onPrimary: #3d1c6f;
-$clr-primaryContainer: #553587;
+$clr-primaryContainer: rebeccapurple;
 $clr-onPrimaryContainer: #ecdcff;
 $clr-background: #1d1b1e;
 $clr-onBackground: #e6e1e6;
@@ -9,11 +9,18 @@ $clr-secondary: #cec2db;
 $clr-onSecondary: #342d40;
 
 body {
-  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   overflow: hidden; // Chrome :(
   -webkit-tap-highlight-color: transparent; // Chrome mobile blue highlight on interactive elements :(
   user-select: none;
   background-color: $clr-background; // body is visable on the border-radius of .menu
+}
+
+button, a {
+  color: inherit;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 ::selection {
@@ -53,7 +60,7 @@ body {
   top: calc(100vh - 85px);
   top: calc(100dvh - 85px);
   right: 10px;
-  color: greenyellow;
+  color: #9dffa4;
   text-decoration: none;
 
   &:hover,
@@ -69,7 +76,7 @@ body {
 .menu {
   height: 45px;
   padding: 5px;
-  border-radius: 13px 13px 0 0;
+  border-radius: 16px;
   display: flex;
   background-color: $clr-primaryContainer;
   overflow-x: auto;
@@ -89,13 +96,19 @@ body {
 .count {
   margin-right: auto;
   display: flex;
-  // gap: 20px;
-  color: $clr-onPrimaryContainer;
+  color: $clr-onSecondary;
   white-space: nowrap;
   max-width: 160px;
   overflow-x: auto;
+  // overflow-y: hidden;
+  background-color: $clr-secondary;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
   p {
     max-width: 200px;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -103,7 +116,6 @@ body {
   // outline: 2px solid $clr-secondary;
   width: max-content;
   button {
-    border-radius: 50%;
     background-color: $clr-primary;
     fill: $clr-onPrimary;
     cursor: pointer;
@@ -111,7 +123,7 @@ body {
   }
 }
 
-#zoomOut:hover>svg {
+#zoomOut:hover > svg {
   animation: zoomOut 600ms ease-in-out 2;
 }
 
@@ -121,7 +133,7 @@ body {
   }
 }
 
-#zoomIn:hover>svg {
+#zoomIn:hover > svg {
   animation: zoomIn 600ms ease-in-out 2;
 }
 
@@ -132,13 +144,14 @@ body {
 }
 
 .menuItem {
-  border-radius: 13px;
+  border-radius: 11px;
   background-color: $clr-primary;
   fill: $clr-onPrimary;
   cursor: pointer;
   border: none;
   width: 45px;
   height: 45px;
+  margin-inline-start: 2.5px;
 
   svg {
     width: 80%;
@@ -147,11 +160,6 @@ body {
   &:focus-visible {
     outline: 3px solid $clr-onPrimary;
   }
-}
-
-.menuItem+.menuItem,
-#zoom {
-  margin-inline-start: 0.25vw;
 }
 
 .rotater svg {
@@ -163,16 +171,15 @@ body {
   rotate: 155deg;
 }
 
-
-#rotate:checked~textarea {
+#rotate:checked ~ textarea {
   rotate: 180deg;
 }
 
-#rotate:checked~.menu .rotater svg {
+#rotate:checked ~ .menu .rotater svg {
   rotate: 0deg;
 }
 
-#rotate:checked~.menu .rotater:hover svg {
+#rotate:checked ~ .menu .rotater:hover svg {
   rotate: -25deg;
 }
 
@@ -180,4 +187,54 @@ body {
   position: absolute;
   opacity: 0;
   cursor: text;
+}
+
+#open svg {
+  transition: rotate 200ms;
+  rotate: 0;
+}
+
+#open[data-state="open"] {
+  svg {
+    rotate: 0.5turn;
+  }
+}
+
+
+.moreSettings {
+  position: fixed;
+  right: 15px;
+  background-color: $clr-onPrimary;
+  color: $clr-primary;
+  border-radius: 16px;
+  bottom: 60px;
+  padding: 0;
+  ul {
+    background-color: $clr-primary;
+    color: $clr-onPrimary;
+    border-radius: 11px;
+    padding: 5px;
+    margin: 5px;
+    list-style-type: none;
+    li {
+      border-radius: 11px;
+      padding: 5px;
+      cursor: pointer;
+      
+      button, a {
+        display: block;
+        background-color: inherit;
+        color: inherit;
+        border: none;
+        border-radius: 8px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      &:hover {
+        color: $clr-primary;
+        background-color: $clr-onPrimary;
+      }
+    }
+  }
 }
