@@ -1,4 +1,5 @@
-import { countWords, countLines } from "alfaaz";
+import { countWords, countLines } from "../node_modules/alfaaz/dist/index.js";
+
 
 const wCount = document.getElementById("wCount");
 const sCount = document.getElementById("sCount");
