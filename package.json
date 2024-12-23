@@ -1,23 +1,26 @@
 {
   "name": "simpletype",
-  "version": "1.0.0",
-  "description": "SimpleType is a temporary-typing web app that respects your privacy. You can use it to communicate, to use typing assistants (like LanguageTool and Grammarly), or for any other reason you may want.",
-  "main": "script.js",
+  "version": "3.0.1",
+  "description": "Simply, type",
+  "main": ".js/script.js",
+  "type": "module",
   "scripts": {
-    "start": "http-server ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Paol-M/SimpleType.git"
   },
   "author": "Paol M.",
-  "license": "ISC",
+  "license": "None",
   "bugs": {
     "url": "https://github.com/Paol-M/SimpleType/issues"
   },
   "homepage": "https://github.com/Paol-M/SimpleType#readme",
   "dependencies": {
-    "alfaaz": "^1.1.0",
-    "my-local-package": "file:./path/to/my-local-package"
+    "alfaaz": "^1.1.0"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.4.6"
   }
 }

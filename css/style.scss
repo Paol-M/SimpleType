@@ -16,7 +16,8 @@ body {
   background-color: $clr-background; // body is visable on the border-radius of .menu
 }
 
-button, a {
+button,
+a {
   color: inherit;
   text-decoration: none;
   font-family: inherit;
@@ -79,7 +80,7 @@ button, a {
   border-radius: 16px;
   display: flex;
   background-color: $clr-primaryContainer;
-  overflow-x: auto;
+  // overflow-x: auto;
 
   // Chrome mobile is weird. 👇️
   position: absolute;
@@ -105,6 +106,7 @@ button, a {
   border: none;
   border-radius: 11px;
   cursor: pointer;
+
   p {
     max-width: 200px;
     display: flex;
@@ -115,6 +117,7 @@ button, a {
 #zoom {
   // outline: 2px solid $clr-secondary;
   width: max-content;
+
   button {
     background-color: $clr-primary;
     fill: $clr-onPrimary;
@@ -123,7 +126,7 @@ button, a {
   }
 }
 
-#zoomOut:hover > svg {
+#zoomOut:hover>svg {
   animation: zoomOut 600ms ease-in-out 2;
 }
 
@@ -133,7 +136,7 @@ button, a {
   }
 }
 
-#zoomIn:hover > svg {
+#zoomIn:hover>svg {
   animation: zoomIn 600ms ease-in-out 2;
 }
 
@@ -157,8 +160,13 @@ button, a {
     width: 80%;
     height: auto;
   }
+
   &:focus-visible {
-    outline: 3px solid $clr-onPrimary;
+    // outline: 3px solid $clr-onPrimary;
+    outline: 4px solid #000000;
+    scale: 1.1;
+    transition: scale 200ms;
+
   }
 }
 
@@ -171,15 +179,15 @@ button, a {
   rotate: 155deg;
 }
 
-#rotate:checked ~ textarea {
+#rotate:checked~textarea {
   rotate: 180deg;
 }
 
-#rotate:checked ~ .menu .rotater svg {
+#rotate:checked~.menu .rotater svg {
   rotate: 0deg;
 }
 
-#rotate:checked ~ .menu .rotater:hover svg {
+#rotate:checked~.menu .rotater:hover svg {
   rotate: -25deg;
 }
 
@@ -190,14 +198,20 @@ button, a {
 }
 
 #open svg {
-  transition: rotate 200ms;
-  rotate: 0;
+  transition: transform 200ms;
+  // rotate: 0;
 }
 
-#open[data-state="open"] {
-  svg {
-    rotate: 0.5turn;
-  }
+#open:hover svg {
+  transform: rotate(-0.05turn) scale(0.9);
+}
+
+#open[data-state="open"] svg {
+  transform: rotate(0.5turn) scale(1.1);
+}
+
+#open[data-state="open"]:hover svg {
+  transform: rotate(0.55turn) scale(1.2);
 }
 
 
@@ -209,6 +223,7 @@ button, a {
   border-radius: 16px;
   bottom: 60px;
   padding: 0;
+
   ul {
     background-color: $clr-primary;
     color: $clr-onPrimary;
@@ -216,12 +231,14 @@ button, a {
     padding: 5px;
     margin: 5px;
     list-style-type: none;
+
     li {
       border-radius: 11px;
       padding: 5px;
       cursor: pointer;
-      
-      button, a {
+
+      button,
+      a {
         display: block;
         background-color: inherit;
         color: inherit;

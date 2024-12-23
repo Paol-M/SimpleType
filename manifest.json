@@ -6,8 +6,8 @@
   "background_color": "#914dff",
   "theme_color": "black",
   "scope": ".",
-  "description": "Simply, type what you want. And the text will be gone on reload.",
-  "lang": "en-UK",
+  "description": "Simply, type what you want.",
+  "lang": "en-US",
   "icons": [
     {
       "src": "img/Favicon/AppIcon_x48.png",

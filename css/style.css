@@ -8,7 +8,8 @@ body {
   background-color: #1d1b1e;
 }
 
-button, a {
+button,
+a {
   color: inherit;
   text-decoration: none;
   font-family: inherit;
@@ -76,7 +77,6 @@ button, a {
   border-radius: 16px;
   display: flex;
   background-color: rebeccapurple;
-  overflow-x: auto;
   position: absolute;
   inset: 0;
   top: calc(100vh - 55px);
@@ -149,7 +149,9 @@ button, a {
   height: auto;
 }
 .menuItem:focus-visible {
-  outline: 3px solid #3d1c6f;
+  outline: 4px solid #000000;
+  scale: 1.1;
+  transition: scale 200ms;
 }
 
 .rotater svg {
@@ -180,12 +182,19 @@ button, a {
 }
 
 #open svg {
-  transition: rotate 200ms;
-  rotate: 0;
+  transition: transform 200ms;
+}
+
+#open:hover svg {
+  transform: rotate(-0.05turn) scale(0.9);
 }
 
 #open[data-state=open] svg {
-  rotate: 0.5turn;
+  transform: rotate(0.5turn) scale(1.1);
+}
+
+#open[data-state=open]:hover svg {
+  transform: rotate(0.55turn) scale(1.2);
 }
 
 .moreSettings {
@@ -210,7 +219,8 @@ button, a {
   padding: 5px;
   cursor: pointer;
 }
-.moreSettings ul li button, .moreSettings ul li a {
+.moreSettings ul li button,
+.moreSettings ul li a {
   display: block;
   background-color: inherit;
   color: inherit;
